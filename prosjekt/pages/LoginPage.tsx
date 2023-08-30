@@ -4,6 +4,7 @@ import { StyleSheet, View, Text } from "react-native";
 import Button from "../components/Button";
 import AuthProvider, { useAuth } from "../contexts/AuthContextProvider";
 import { HOC } from "../components/HOC";
+import Pokemon from "../components/Pokemon";
 
 export default function LoginPage() {
   const { user, login, logout } = useAuth();
@@ -31,6 +32,7 @@ export default function LoginPage() {
         </Text>
       )}
       {/* <HOC /> */}
+      {/* <Pokemon /> */}
       <Button
         color={"red"}
         label={user ? "Logout" : "Login"}
