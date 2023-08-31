@@ -22,7 +22,6 @@ export default function App() {
         Click the button below to change the background to a random color!
       </Text>
       <TouchableOpacity onPress={onChangeColorPress}>
-        {/*A button with some padding and text */}
         <View style={styles.button}>
           <Text>Change color</Text>
         </View>
@@ -40,6 +39,7 @@ const styles = StyleSheet.create({
   },
   desc: {
     width: "80%",
+    color: "white",
   },
   button: {
     backgroundColor: "white",
