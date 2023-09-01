@@ -1,32 +1,21 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  Touchable,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 export default function App() {
-  const [backgroundColor, setBackgroundColor] = useState("blue");
 
-  const onChangeColorPress = () => {
-    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    setBackgroundColor(randomColor);
+  const handlePress = () => {
+    console.log("Button pressed!");
   };
 
   return (
-    <View style={{ ...styles.container, backgroundColor }}>
-      <Text style={styles.desc}>
-        Click the button below to change the background to a random color!
+    <View style={styles.container}>
+      <Text style={styles.title}>Welcome!</Text>
+      <Text style={styles.belt}>
+        Let's journey through the solar system together!
       </Text>
-      <TouchableOpacity onPress={onChangeColorPress}>
-        <View style={styles.button}>
-          <Text>Change color</Text>
-        </View>
+      <Text style={styles.belt}>Click the button below to embark!</Text>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
+        <Text>Continue</Text>
       </TouchableOpacity>
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -36,13 +25,24 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "black",
   },
-  desc: {
-    width: "80%",
+  title: {
     color: "white",
+    maxWidth: "85%",
+    alignContent: "center",
+    textAlign: "center",
+    fontSize: 40,
+    
+  },
+  belt: {
+    color: "white",
+    textAlign: "center",
+    opacity: 0.65,
+
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "#d23",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
