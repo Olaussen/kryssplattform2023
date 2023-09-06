@@ -4,9 +4,3 @@ declare module "*.svg" {
   const content: React.FC<SvgProps>;
   export default content;
 }
-
-type Planet = {
-  planetName: string;
-  planetDescription: string;
-  PlanetImage: React.FC<SvgProps>;
-};
