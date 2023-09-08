@@ -63,53 +63,52 @@ console.log(traverseTree(rootNode)); // Output: 1, 2, 3, 4, 5
 // Oppgave 4
 console.log("\n----- Oppgave 4 -----");
 
-/*
-import React from "react";
-import { Text, View } from "react-native";
 
-interface AdditionalProps {
-  title: string;
-}
+// import React from "react";
+// import { Text, View } from "react-native";
 
-function withAdditionalProps<T>(
-  WrappedComponent: React.ComponentType<T>
-): React.FC<T & AdditionalProps> {
-  const EnhancedComponent: React.FC<T & AdditionalProps> = (props) => {
-    const addProps = props as AdditionalProps; // Type casting to ensure TypeScript understands the props
-    return <WrappedComponent {...(addProps as T)} />;
-  };
-  return EnhancedComponent;
-}
+// interface AdditionalProps {
+//   title: string;
+// }
 
-interface OriginalComponentProps {
-  description: string;
-  title?: string;
-}
+// function withAdditionalProps<T>(
+//   WrappedComponent: React.ComponentType<T>
+// ): React.FC<T & AdditionalProps> {
+//   const EnhancedComponent: React.FC<T & AdditionalProps> = (props) => {
+//     const addProps = props as AdditionalProps; // Type casting to ensure TypeScript understands the props
+//     return <WrappedComponent {...(addProps as T)} />;
+//   };
+//   return EnhancedComponent;
+// }
 
-export const OriginalComponent: React.FC<OriginalComponentProps> = ({
-  description,
-  title,
-}) => {
-  return (
-    <View>
-      {title && <Text style={{ color: "white" }}>Title: {title}</Text>}
-      <Text style={{ color: "white" }}>Description: {description}</Text>
-    </View>
-  );
-};
+// interface OriginalComponentProps {
+//   description: string;
+//   title?: string;
+// }
 
-const EnhancedOriginalComponent = withAdditionalProps(OriginalComponent);
+// export const OriginalComponent: React.FC<OriginalComponentProps> = ({
+//   description,
+//   title,
+// }) => {
+//   return (
+//     <View>
+//       {title && <Text style={{ color: "white" }}>Title: {title}</Text>}
+//       <Text style={{ color: "white" }}>Description: {description}</Text>
+//     </View>
+//   );
+// };
 
-export const HOC = () => {
-  return (
-    <EnhancedOriginalComponent
-      description={"Beskrivelse oj oj!"}
-      title={"Hei, Hauk! Du er rå!"}
-    />
-  );
-};
+// const EnhancedOriginalComponent = withAdditionalProps(OriginalComponent);
 
-*/
+// export const HOC = () => {
+//   return (
+//     <EnhancedOriginalComponent
+//       description={"Beskrivelse oj oj!"}
+//       title={"Hei, Hauk! Du er rå!"}
+//     />
+//   );
+// };
+
 
 // Oppgave 5
 console.log("\n----- Oppgave 5 -----");
