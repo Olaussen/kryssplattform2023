@@ -1,12 +1,11 @@
-import React from "react";
-import WelcomeRoutes from "./src/Routes/Welcome.Routes";
 import {
   Roboto_400Regular,
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import Button from "./src/components/Button";
+import React from "react";
 import { View } from "react-native";
+import Welcome from "./src/pages/Welcome";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,13 +17,5 @@ export default function App() {
     return null;
   }
 
-  const log = () => {
-    console.log("Hello");
-  }
-
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button title="Join the journey" Icon={() => <></>} onPress={log}/>
-    </View>
-  );
+  return <Welcome />;
 }
