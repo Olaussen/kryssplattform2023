@@ -4,8 +4,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/roboto";
 import React from "react";
-import { View } from "react-native";
-import Welcome from "./src/pages/Welcome";
+import WelcomeRoutes from "./src/Routes/Welcome.Routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,5 +16,5 @@ export default function App() {
     return null;
   }
 
-  return <Welcome />;
+  return <WelcomeRoutes />;
 }
