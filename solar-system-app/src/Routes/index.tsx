@@ -1,14 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { Text, View } from "react-native";
+import HomePage from "../pages/HomePage";
 
-const HomePage: React.FC = () => {
-  return (
-    <View>
-      <Text>Hey</Text>
-    </View>
-  );
-};
 
 const Tab = createBottomTabNavigator();
 const HomeRoutes: React.FC = () => {
