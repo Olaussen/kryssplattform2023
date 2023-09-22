@@ -19,7 +19,7 @@ const Button: React.FC<IButtonProps> = ({ title, Icon, onPress }) => {
     <TouchableOpacity onPress={onPress}>
       <Gradients.button style={styles.gradient}>
         <Text style={[Fonts.buttonTitle(), { color: "#fff" }]}>{title}</Text>
-        {Icon && <Icon />}
+        {Icon && <Icon style={{ marginLeft: 16 }} />}
       </Gradients.button>
     </TouchableOpacity>
   );
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingVertical: 16,
     flexDirection: "row",
-    marginTop: 16
+    marginTop: 16,
   },
 });
 
