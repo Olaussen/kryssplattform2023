@@ -5,6 +5,7 @@ import {
 import React from "react";
 import HomePage from "../pages/HomePage";
 import Assets from "../Assets";
+import SearchPage from "../pages/Search";
 
 const Tab = createBottomTabNavigator();
 const HomeRoutes: React.FC = () => {
@@ -22,7 +23,7 @@ const HomeRoutes: React.FC = () => {
       />
       <Tab.Screen
         name="Search"
-        component={HomePage}
+        component={SearchPage}
         options={{
           ...screenOptions,
           tabBarIcon: ({ focused }) => (

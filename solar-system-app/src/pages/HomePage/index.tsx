@@ -12,30 +12,32 @@ const HomePage: React.FC = () => {
       <Assets.images.BackgroundApp style={styles.bgImage} />
       <View style={styles.content}>
         <Header />
-        <Text style={styles.textWhite}>Categories</Text>
-        <View style={styles.categoryList}>
-          <CategoryButton
-            label="Planets"
-            Icon={Assets.icons.Planets}
-            color="blue"
-          />
-          <CategoryButton
-            label="Asteroids"
-            Icon={Assets.icons.Asteroids}
-            color="pink"
-          />
-          <CategoryButton
-            label="Start"
-            Icon={Assets.icons.Stars}
-            color="cyan"
-          />
-          <CategoryButton
-            label="Galaxies"
-            Icon={Assets.icons.Galaxies}
-            color="yellow"
-          />
+        <View style={styles.categories}>
+          <Text style={styles.textWhite}>Categories</Text>
+          <View style={styles.categoryList}>
+            <CategoryButton
+              label="Planets"
+              Icon={Assets.icons.Planets}
+              color="blue"
+            />
+            <CategoryButton
+              label="Asteroids"
+              Icon={Assets.icons.Asteroids}
+              color="pink"
+            />
+            <CategoryButton
+              label="Start"
+              Icon={Assets.icons.Stars}
+              color="cyan"
+            />
+            <CategoryButton
+              label="Galaxies"
+              Icon={Assets.icons.Galaxies}
+              color="yellow"
+            />
+          </View>
         </View>
-        <View>
+        <View style={styles.planets}>
           <Text style={styles.textWhite}>Planets</Text>
           <ScrollView horizontal style={styles.scrollView}>
             <PlanetCard label="Mercury" PlanetImage={Assets.images.Mercury} />
@@ -44,6 +46,8 @@ const HomePage: React.FC = () => {
             <PlanetCard label="Mars" PlanetImage={Assets.images.Mars} />
             <PlanetCard label="Jupiter" PlanetImage={Assets.images.Jupiter} />
             <PlanetCard label="Saturn" PlanetImage={Assets.images.Saturn} />
+            <PlanetCard label="Uranus" PlanetImage={Assets.images.Uranus} />
+            <PlanetCard label="Neptune" PlanetImage={Assets.images.Neptune} />
           </ScrollView>
         </View>
       </View>
@@ -55,14 +59,16 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.brandBackground,
     flex: 1,
-    // justifyContent: "flex-start",
-    // alignItems: "center",
   },
   content: {
     padding: 16,
   },
+  categories: {
+    marginTop: 40,
+  },
   categoryList: {
     flexDirection: "row",
+    justifyContent: "space-between",
     gap: 16,
   },
   textWhite: {
@@ -75,6 +81,9 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginTop: 10,
+  },
+  planets: {
+    marginTop: 35,
   },
 });
 
