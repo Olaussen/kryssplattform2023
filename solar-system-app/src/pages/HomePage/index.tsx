@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Assets from "../../Assets";
 import { Colors } from "../../Styles/StyleGuide";
 import Header from "../../components/Header";
@@ -10,8 +10,8 @@ const HomePage: React.FC = () => {
   return (
     <View style={styles.container}>
       <Assets.images.BackgroundApp style={styles.bgImage} />
-      <Header />
-      <View>
+      <View style={styles.content}>
+        <Header />
         <Text style={styles.textWhite}>Categories</Text>
         <View style={styles.categoryList}>
           <CategoryButton
@@ -35,14 +35,17 @@ const HomePage: React.FC = () => {
             color="yellow"
           />
         </View>
-      </View>
-      <View>
-        <PlanetCard label="Mercury" PlanetImage={Assets.images.Mercury} />
-        <PlanetCard label="Venus" PlanetImage={Assets.images.Venus} />
-        <PlanetCard label="Earth" PlanetImage={Assets.images.Earth} />
-        <PlanetCard label="Mars" PlanetImage={Assets.images.Mars} />
-        <PlanetCard label="Jupiter" PlanetImage={Assets.images.Jupiter} />
-        <PlanetCard label="Saturn" PlanetImage={Assets.images.Saturn} />
+        <View>
+          <Text style={styles.textWhite}>Planets</Text>
+          <ScrollView horizontal style={styles.scrollView}>
+            <PlanetCard label="Mercury" PlanetImage={Assets.images.Mercury} />
+            <PlanetCard label="Venus" PlanetImage={Assets.images.Venus} />
+            <PlanetCard label="Earth" PlanetImage={Assets.images.Earth} />
+            <PlanetCard label="Mars" PlanetImage={Assets.images.Mars} />
+            <PlanetCard label="Jupiter" PlanetImage={Assets.images.Jupiter} />
+            <PlanetCard label="Saturn" PlanetImage={Assets.images.Saturn} />
+          </ScrollView>
+        </View>
       </View>
     </View>
   );
@@ -52,8 +55,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.brandBackground,
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    // justifyContent: "flex-start",
+    // alignItems: "center",
+  },
+  content: {
+    padding: 16,
   },
   categoryList: {
     flexDirection: "row",
@@ -66,6 +72,9 @@ const styles = StyleSheet.create({
   bgImage: {
     position: "absolute",
     zIndex: 0,
+  },
+  scrollView: {
+    marginTop: 10,
   },
 });
 
