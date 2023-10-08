@@ -1,10 +1,10 @@
 import {
-  createBottomTabNavigator,
   BottomTabNavigationOptions,
+  createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
 import React from "react";
-import Assets from "../Assets";
 import HomePage from "../pages/HomePage";
+import Assets from "../Assets";
 import SearchPage from "../pages/Search";
 
 const Tab = createBottomTabNavigator();
@@ -22,13 +22,13 @@ const HomeRoutes: React.FC = () => {
           ),
         }}
       />
-      <Tab.Screen
+       <Tab.Screen
         name="Search"
-        component={HomePage}
+        component={SearchPage}
         options={{
           ...screenOptions,
           tabBarIcon: ({ focused }) => (
-            <Assets.icons.Home style={iconStyle(focused)} />
+            <Assets.icons.Search style={iconStyle(focused)} />
           ),
         }}
       />
@@ -38,7 +38,7 @@ const HomeRoutes: React.FC = () => {
         options={{
           ...screenOptions,
           tabBarIcon: ({ focused }) => (
-            <Assets.icons.Home style={iconStyle(focused)} />
+            <Assets.icons.Save style={iconStyle(focused)} />
           ),
         }}
       />
@@ -48,7 +48,7 @@ const HomeRoutes: React.FC = () => {
         options={{
           ...screenOptions,
           tabBarIcon: ({ focused }) => (
-            <Assets.icons.Home style={iconStyle(focused)} />
+            <Assets.icons.Gallery style={iconStyle(focused)} />
           ),
         }}
       />
