@@ -59,8 +59,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.brandBackground,
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
+  },
+  content: {
+    padding: 16,
+  },
+  categories: {
+    marginTop: 40,
   },
   content: {
     padding: 16,
@@ -70,6 +74,7 @@ const styles = StyleSheet.create({
   },
   categoryList: {
     flexDirection: "row",
+    justifyContent: "space-between",
     gap: 16,
   },
   textWhite: {

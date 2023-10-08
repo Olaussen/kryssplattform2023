@@ -9,17 +9,17 @@ import { TextInput } from "react-native-gesture-handler";
 import { Colors, Fonts } from "../../Styles/StyleGuide";
 
 type InputProps = {
-  OnTextChange?: (text: string) => void;
+  onTextChange?: (text: string) => void;
 };
 
-const Input: React.FC<InputProps> = ({ OnTextChange }) => {
+const Input: React.FC<InputProps> = ({ onTextChange }) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleInputChange = (
     event: NativeSyntheticEvent<TextInputChangeEventData>
   ) => {
     setInputValue(event.nativeEvent.text);
-    OnTextChange && OnTextChange(event.nativeEvent.text);
+    onTextChange && onTextChange(event.nativeEvent.text);
   };
 
   return (
@@ -28,7 +28,7 @@ const Input: React.FC<InputProps> = ({ OnTextChange }) => {
         style={[styles.input, Fonts.paragraph()]}
         value={inputValue}
         onChange={handleInputChange}
-        placeholder="Search"
+        placeholder="Search..."
       />
     </View>
   );
