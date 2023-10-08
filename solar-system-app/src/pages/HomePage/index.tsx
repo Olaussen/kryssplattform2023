@@ -66,12 +66,6 @@ const styles = StyleSheet.create({
   categories: {
     marginTop: 40,
   },
-  content: {
-    padding: 16,
-  },
-  categories: {
-    marginTop: 40,
-  },
   categoryList: {
     flexDirection: "row",
     justifyContent: "space-between",
