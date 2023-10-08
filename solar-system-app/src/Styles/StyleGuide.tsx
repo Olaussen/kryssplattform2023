@@ -68,7 +68,7 @@ export const Gradients = {
 export const Fonts = {
   homeTitle(): StyleProp<TextStyle> {
     return {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto_700Bold",
       fontWeight: "700",
       fontSize: 30,
     };
@@ -76,28 +76,28 @@ export const Fonts = {
 
   buttonTitle(): StyleProp<TextStyle> {
     return {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto_700Bold",
       fontWeight: "700",
       fontSize: 16,
     };
   },
   paragraph(): StyleProp<TextStyle> {
     return {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto_400Regular",
       fontWeight: "400",
       fontSize: 16,
     };
   },
   placeholder(): StyleProp<TextStyle> {
     return {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto_400Regular",
       fontWeight: "400",
       fontSize: 14,
     };
   },
   bottomBarItem(): StyleProp<TextStyle> {
     return {
-      fontFamily: "Roboto",
+      fontFamily: "Roboto_400Regular",
       fontWeight: "400",
       fontSize: 12,
     };

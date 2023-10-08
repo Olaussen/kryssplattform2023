@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
 import Assets from "../../Assets";
 import { Fonts } from "../../Styles/StyleGuide";
 
@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View>
         <View style={styles.helloBlock}>
           <Text style={[Fonts.homeTitle(), styles.textWhite]}>Well met, </Text>
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <TouchableOpacity onPress={handleSettingsPress}>
         <Assets.icons.Settings />
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 

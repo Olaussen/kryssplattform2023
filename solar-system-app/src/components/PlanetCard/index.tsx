@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     width: 140,
     height: 190,
     overflow: "hidden",
+    marginRight: 16,
   },
   image: {
     right: 35,
