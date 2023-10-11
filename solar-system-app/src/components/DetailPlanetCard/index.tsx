@@ -16,10 +16,10 @@ const DetailPlanetCard: React.FC<DetailPlanetCardProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      <PlanetImage width={200} height={200} />
-      <View>
+      <PlanetImage width={200} height={200} style={styles.planet} />
+      <View style={styles.infos}>
         <View style={styles.title}>
-          <Text style={[styles.titleText, Fonts.homeTitle(), styles.whiteText]}>
+          <Text style={[Fonts.homeTitle(), styles.whiteText]}>
             {planetName}
           </Text>
           <TouchableOpacity>
@@ -27,14 +27,14 @@ const DetailPlanetCard: React.FC<DetailPlanetCardProps> = ({
           </TouchableOpacity>
         </View>
         <Text style={[styles.whiteText, styles.info]}>{planetInfo}</Text>
-        <View style={styles.continue}>
+        <TouchableOpacity style={styles.footer}>
           <Text style={styles.whiteText}>Continue reading...</Text>
           <Assets.icons.OrangeForward
             width={16}
             height={16}
             style={styles.arrow}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -47,29 +47,40 @@ const styles = StyleSheet.create({
     height: "auto",
     borderRadius: 10,
     overflow: "hidden",
+    marginVertical: 10,
     flexDirection: "row",
   },
+  planet: {
+    top: -40,
+    left: -35,
+  },
   infos: {
-    color: "white",
+    left: -30,
+    width: "43%",
+    merginRight: 100,
+    marginLeft: 6,
+    justifyContent: "center",
   },
   info: {
     opacity: 0.6,
+    height: 100,
   },
   title: {
-    width: "40%",
     flexDirection: "row",
-    color: "white",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   whiteText: {
     color: "white",
   },
-  titleText: {},
-  continue: {
-    flexDirection: "row",
-  },
+
   arrow: {
     marginLeft: 5,
+  },
+  footer: {
+    flexDirection: "row",
+    marginTop: 10,
+    alignItems: "center",
   },
 });
 
