@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
   },
   infos: {
     left: -30,
-    width: "43%",
-    merginRight: 100,
+    width: "41%",
+    marginRight: 100,
     marginLeft: 6,
     justifyContent: "center",
   },

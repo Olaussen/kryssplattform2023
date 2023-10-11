@@ -27,7 +27,7 @@ const SearchPage: React.FC = () => {
     <View style={styles.container}>
       <Assets.images.BackgroundApp style={styles.bgImage} />
       <Input onTextChange={handleSearchChange} />
-      <ScrollView>
+      <ScrollView style={styles.planetScroll}>
         {planets.map((planet) => (
           <DetailPlanetCard
             key={planet.planetName}
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 0,
   },
+  planetScroll: {
+    marginBottom: 50,
+  }
 });
 
 const PLANETS: Planet[] = [
