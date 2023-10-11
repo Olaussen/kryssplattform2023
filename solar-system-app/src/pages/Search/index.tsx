@@ -1,45 +1,56 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Input from "../../components/Input";
 import DetailPlanetCard from "../../components/DetailPlanetCard";
 import Assets from "../../Assets";
 import { SvgProps } from "react-native-svg";
 import { useState } from "react";
-
-export type Planet = {
-  planetName: string;
-  PlanetImage: React.FC<SvgProps>;
-  planetInfo: string;
-};
+import { Colors } from "../../Styles/StyleGuide";
+import {
+  Planet,
+  usePlanetContext,
+} from "../../providers/PlanetContextProvider";
 
 const SearchPage: React.FC = () => {
-  const [planets, setPlanets] = useState<Planet[]>([
-    {
-      planetName: "Mercury",
-      PlanetImage: Assets.images.Mercury,
-      planetInfo:
-        "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets.",
-    },
-  ]);
+  const [planets, setPlanets] = useState<Planet[]>(PLANETS);
+
+  const { currentPlanet } = usePlanetContext();
+
+  const handleSearchChange = (text: string) => {
+    const searchValue = text.toLowerCase();
+    const searchHit = PLANETS.filter((planet) =>
+      planet.planetName.toLowerCase().includes(searchValue)
+    );
+    setPlanets(searchHit);
+  };
 
   return (
     <View style={styles.container}>
-      <Input />
-      {planets.map((planet) => (
-        <DetailPlanetCard
-          planetName={planet.planetName}
-          PlanetImage={planet.PlanetImage}
-          planetInfo={planet.planetInfo}
-        />
-      ))}
+      <Assets.images.BackgroundApp style={styles.bgImage} />
+      <Input onTextChange={handleSearchChange} />
+      <ScrollView>
+        {planets.map((planet) => (
+          <DetailPlanetCard
+            key={planet.planetName}
+            planetName={planet.planetName}
+            PlanetImage={planet.PlanetImage}
+            planetInfo={planet.planetInfo}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: Colors.brandBackground,
+    marginTop: 50,
     justifyContent: "center",
     alignItems: "center",
+  },
+  bgImage: {
+    position: "absolute",
+    zIndex: 0,
   },
 });
 
