@@ -3,20 +3,33 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 import Assets from "../../Assets";
 import { Colors } from "../../Styles/StyleGuide";
+import {
+  Planet,
+  usePlanetContext,
+} from "../../providers/PlanetContextProvider";
+import useOwnNavigation from "../../hooks/useOwnNavigation";
 
 type PlanetCardProps = {
   label: string;
   PlanetImage: React.FC<SvgProps>;
-  onPress?: (planetName: string) => void;
 };
 
-const PlanetCard: React.FC<PlanetCardProps> = ({
-  label,
-  PlanetImage,
-  onPress,
-}) => {
+const PlanetCard: React.FC<PlanetCardProps> = ({ label, PlanetImage }) => {
+  const { setCurrentPlanet } = usePlanetContext();
+  const { navigate } = useOwnNavigation();
+
+  const handlePlanetPress = () => {
+    const planet: Planet = {
+      planetName: label,
+      PlanetImage,
+      planetInfo: label,
+    };
+    setCurrentPlanet(planet);
+    navigate("DetailPage");
+  };
+
   return (
-    <TouchableOpacity onPress={() => onPress && onPress(label)}>
+    <TouchableOpacity onPress={handlePlanetPress}>
       <View style={styles.container}>
         <PlanetImage style={styles.image} width={164} height={164} />
         <View style={styles.footer}>

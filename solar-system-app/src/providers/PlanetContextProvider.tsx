@@ -8,7 +8,7 @@ export type Planet = {
   planetInfo: string;
 };
 
-const EARTH: Planet = {
+export const EARTH: Planet = {
   planetName: "Earth",
   PlanetImage: Assets.images.Earth,
   planetInfo: "Earth",

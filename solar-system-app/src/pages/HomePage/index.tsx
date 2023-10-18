@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Assets from "../../Assets";
 import { Colors } from "../../Styles/StyleGuide";
 import Header from "../../components/Header";
 import CategoryButton from "../../components/CategoryButton";
 import PlanetCard from "../../components/PlanetCard";
-import { usePlanetContext } from "../../providers/PlanetContextProvider";
+import { EARTH, usePlanetContext } from "../../providers/PlanetContextProvider";
 
 const HomePage: React.FC = () => {
   const { currentPlanet, setCurrentPlanet } = usePlanetContext();
@@ -52,11 +52,7 @@ const HomePage: React.FC = () => {
           <Text style={styles.textWhite}>Planets</Text>
           <ScrollView horizontal style={styles.scrollView}>
             <PlanetCard label="Mercury" PlanetImage={Assets.images.Mercury} />
-            <PlanetCard
-              label="Venus"
-              PlanetImage={Assets.images.Venus}
-              onPress={handlePlanetChange}
-            />
+            <PlanetCard label="Venus" PlanetImage={Assets.images.Venus} />
             <PlanetCard label="Earth" PlanetImage={Assets.images.Earth} />
             <PlanetCard label="Mars" PlanetImage={Assets.images.Mars} />
             <PlanetCard label="Jupiter" PlanetImage={Assets.images.Jupiter} />
