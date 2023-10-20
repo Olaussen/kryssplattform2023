@@ -18,7 +18,6 @@ const button: React.FC<Styled> = ({ style, children }) => {
       colors={["#EF5F53", "#FA8F70"]}
       start={[0, 0]}
       end={[1, 0]}
-      style={style}
     >
       {children}
     </LinearGradient>
