@@ -1,13 +1,14 @@
-import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import Assets from "../../Assets";
-import DetailPlanetCard from "../../components/DetailPlanetCard";
 import Input from "../../components/Input";
+import DetailPlanetCard from "../../components/DetailPlanetCard";
+import Assets from "../../Assets";
+import { SvgProps } from "react-native-svg";
+import { useState } from "react";
+import { Colors } from "../../Styles/StyleGuide";
 import {
   Planet,
   usePlanetContext,
 } from "../../providers/PlanetContextProvider";
-import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const SearchPage: React.FC = () => {
   const [planets, setPlanets] = useState<Planet[]>(PLANETS);
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   },
   planetScroll: {
     marginBottom: 50,
-  },
+  }
 });
 
 const PLANETS: Planet[] = [

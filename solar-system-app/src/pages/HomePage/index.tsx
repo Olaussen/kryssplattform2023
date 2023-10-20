@@ -1,25 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import Assets from "../../Assets";
 import { Colors } from "../../Styles/StyleGuide";
 import Header from "../../components/Header";
 import CategoryButton from "../../components/CategoryButton";
 import PlanetCard from "../../components/PlanetCard";
-import { usePlanetContext } from "../../providers/PlanetContextProvider";
+import { EARTH, usePlanetContext } from "../../providers/PlanetContextProvider";
 
 const HomePage: React.FC = () => {
-
-  const {currentPlanet, setCurrentPlanet} = usePlanetContext();
+  const { currentPlanet, setCurrentPlanet } = usePlanetContext();
 
   const handlePlanetChange = (planetName: string) => {
-    setCurrentPlanet(
-      {
-        planetName,
-        PlanetImage: Assets.images.Earth,
-        planetInfo: planetName
-      }
-    )
-  }
+    setCurrentPlanet({
+      planetName,
+      PlanetImage: Assets.images.Earth,
+      planetInfo: planetName,
+    });
+  };
 
   return (
     <View style={styles.container}>
