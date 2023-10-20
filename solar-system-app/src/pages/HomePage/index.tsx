@@ -5,8 +5,22 @@ import { Colors } from "../../Styles/StyleGuide";
 import Header from "../../components/Header";
 import CategoryButton from "../../components/CategoryButton";
 import PlanetCard from "../../components/PlanetCard";
+import { usePlanetContext } from "../../providers/PlanetContextProvider";
 
 const HomePage: React.FC = () => {
+
+  const {currentPlanet, setCurrentPlanet} = usePlanetContext();
+
+  const handlePlanetChange = (planetName: string) => {
+    setCurrentPlanet(
+      {
+        planetName,
+        PlanetImage: Assets.images.Earth,
+        planetInfo: planetName
+      }
+    )
+  }
+
   return (
     <View style={styles.container}>
       <Assets.images.BackgroundApp style={styles.bgImage} />
@@ -41,7 +55,7 @@ const HomePage: React.FC = () => {
           <Text style={styles.textWhite}>Planets</Text>
           <ScrollView horizontal style={styles.scrollView}>
             <PlanetCard label="Mercury" PlanetImage={Assets.images.Mercury} />
-            <PlanetCard label="Venus" PlanetImage={Assets.images.Venus} />
+            <PlanetCard label="Venus" PlanetImage={Assets.images.Venus}/>
             <PlanetCard label="Earth" PlanetImage={Assets.images.Earth} />
             <PlanetCard label="Mars" PlanetImage={Assets.images.Mars} />
             <PlanetCard label="Jupiter" PlanetImage={Assets.images.Jupiter} />

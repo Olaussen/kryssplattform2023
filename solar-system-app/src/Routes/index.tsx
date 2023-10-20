@@ -6,6 +6,7 @@ import React from "react";
 import HomePage from "../pages/HomePage";
 import Assets from "../Assets";
 import SearchPage from "../pages/Search";
+import DetailPage from "../pages/DetailPage";
 
 const Tab = createBottomTabNavigator();
 
@@ -44,7 +45,7 @@ const HomeRoutes: React.FC = () => {
       />
       <Tab.Screen
         name="DetailPage"
-        component={HomePage}
+        component={DetailPage}
         options={{
           ...screenOptions,
           tabBarIcon: ({ focused }) => (

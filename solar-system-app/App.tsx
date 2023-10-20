@@ -5,6 +5,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import React from "react";
 import WelcomeRoutes from "./src/Routes/Welcome.Routes";
+import PlanetContextProvider from "./src/providers/PlanetContextProvider";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,5 +17,9 @@ export default function App() {
     return null;
   }
 
-  return <WelcomeRoutes />;
+  return (
+    <PlanetContextProvider>
+      <WelcomeRoutes />
+    </PlanetContextProvider>
+  );
 }
