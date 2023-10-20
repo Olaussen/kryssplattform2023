@@ -18,8 +18,8 @@ const CategoryButton: React.FC<CategoryButtonProps> = ({
   return (
     <TouchableOpacity>
       <Gradient style={styles.container}>
-        <Icon style={styles.icon} />
-        <Text style={styles.label}>{label}</Text>
+        <Icon className="mb-2" />
+        <Text className="text-white">{label}</Text>
       </Gradient>
     </TouchableOpacity>
   );
@@ -33,8 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  icon: { marginBottom: 8 },
-  label: { color: "white" },
 });
 
 export default CategoryButton;
