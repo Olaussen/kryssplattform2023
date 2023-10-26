@@ -1,6 +1,7 @@
 import { SvgProps } from "react-native-svg";
 import { Gradients } from "./Styles/StyleGuide";
 import Assets from "./Assets";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type Category = {
   gradient: keyof typeof Gradients;
@@ -88,4 +89,16 @@ export const PLANETS = [
 ];
 
 export const doggoIpsum =
-"Doggo ipsum i am bekom fat much ruin diet ur givin me a spook. Blep very jealous pupper mlem long water shoob doggo, he made many woofs doge ur givin me a spook bork, shoob ruff doggorino. Very jealous pupper I am bekom fat big ol pupper wrinkler ur givin me a spook, pats wow very biscit. Borkf thicc heck very hand that feed shibe stop it fren extremely cuuuuuute long water shoob noodle horse, smol borking doggo with a long snoot for pats aqua doggo much ruin diet clouds ur givin me a spook. Fluffer shibe snoot the neighborhood pupper h*ck doing me a frighten, waggy wags vvv sub woofer. Length boy doing me a frighten very taste wow you are doing me the shock borkf shibe, tungg heckin maximum borkdrive boof snoot, long doggo woofer shibe thicc. Vvv dat tungg tho wrinkler long water shoob puggo, h*ck very taste wow.Thicc you are doing me the shock most angery pupper I have ever seen extremely cuuuuuute ur givin me a spook big ol, pupper ur givin me a spook h*ck. Fat boi borkdrive very good spot aqua doggo very good spot boofers, puggo boofers tungg. wow such tempt. Heckin angery woofer long bois vvv shooberino vvv heckin smol borking doggo with a long snoot for pats, thicc heckin good boys boof thicc pats. Smol very taste wow heck adorable doggo sub woofer borking doggo, doggo stop it fren long doggo. porgo. Heck smol sub woofer fat boi, what a nice floof ur givin me a spook boof boofers, \borkdrive aqua doggo. Very good spot boofers very hand that feed shibe many pats, maximum borkdrive. pupperino blep. Long woofer very taste wow shoob extremely cuuuuuute, heck wrinkler.";
+  "Doggo ipsum i am bekom fat much ruin diet ur givin me a spook. Blep very jealous pupper mlem long water shoob doggo, he made many woofs doge ur givin me a spook bork, shoob ruff doggorino. Very jealous pupper I am bekom fat big ol pupper wrinkler ur givin me a spook, pats wow very biscit. Borkf thicc heck very hand that feed shibe stop it fren extremely cuuuuuute long water shoob noodle horse, smol borking doggo with a long snoot for pats aqua doggo much ruin diet clouds ur givin me a spook. Fluffer shibe snoot the neighborhood pupper h*ck doing me a frighten, waggy wags vvv sub woofer. Length boy doing me a frighten very taste wow you are doing me the shock borkf shibe, tungg heckin maximum borkdrive boof snoot, long doggo woofer shibe thicc. Vvv dat tungg tho wrinkler long water shoob puggo, h*ck very taste wow.Thicc you are doing me the shock most angery pupper I have ever seen extremely cuuuuuute ur givin me a spook big ol, pupper ur givin me a spook h*ck. Fat boi borkdrive very good spot aqua doggo very good spot boofers, puggo boofers tungg. wow such tempt. Heckin angery woofer long bois vvv shooberino vvv heckin smol borking doggo with a long snoot for pats, thicc heckin good boys boof thicc pats. Smol very taste wow heck adorable doggo sub woofer borking doggo, doggo stop it fren long doggo. porgo. Heck smol sub woofer fat boi, what a nice floof ur givin me a spook boof boofers, \borkdrive aqua doggo. Very good spot boofers very hand that feed shibe many pats, maximum borkdrive. pupperino blep. Long woofer very taste wow shoob extremely cuuuuuute, heck wrinkler.";
+
+export const retrieveFavoritesFromStorage = async (): Promise<string[]> => {
+  try {
+    const favorites = await AsyncStorage.getItem("favorites");
+    if (favorites !== null) {
+      return JSON.parse(favorites);
+    }
+    return [];
+  } catch (error) {
+    return [];
+  }
+};

@@ -1,21 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Assets from "../../Assets";
-import { Planet } from "../../data";
+import { Planet, retrieveFavoritesFromStorage } from "../../data";
 import useOwnNavigation from "../../hooks/useOwnNavigation";
 import { usePlanetContext } from "../../providers/PlanetContextProvider";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface IDetailPlanetCardProps {
   planet: Planet;
 }
 const DetailPlanetCard: React.FC<IDetailPlanetCardProps> = ({ planet }) => {
   const { name, description, Image } = planet;
-  const { updateCurrentPlanet } = usePlanetContext();
+  const {
+    updateCurrentPlanet,
+    addToFavorites,
+    removeFromFavorites,
+    favorites,
+  } = usePlanetContext();
   const { navigate } = useOwnNavigation();
+  const isFavorite = favorites.includes(name);
 
   const handleFavoriteSave = () => {
-    console.log(`Saved ${name} to favorites`);
+    if (isFavorite) {
+      removeFromFavorites(name);
+      return;
+    }
+    addToFavorites(name);
   };
 
   const handleContinueReading = () => {
@@ -30,7 +41,11 @@ const DetailPlanetCard: React.FC<IDetailPlanetCardProps> = ({ planet }) => {
         <View className="flex-row items-center justify-between">
           <Text className="text-white text-2xl font-bold mb-2">{name}</Text>
           <TouchableOpacity onPress={handleFavoriteSave}>
-            <Assets.icons.Save />
+            {isFavorite ? (
+              <Assets.icons.Saved fill="white" />
+            ) : (
+              <Assets.icons.Save />
+            )}
           </TouchableOpacity>
         </View>
         <Text className="text-white opacity-70">{description}</Text>
