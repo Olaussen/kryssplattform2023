@@ -31,4 +31,5 @@ const PlanetCard: React.FC<IPlanetCardProps> = ({ planet }) => {
     </TouchableOpacity>
   );
 };
+
 export default PlanetCard;

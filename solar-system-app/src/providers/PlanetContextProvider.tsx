@@ -2,21 +2,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 import Assets from "../Assets";
 import { PLANETS, Planet } from "../data";
 
-<<<<<<< Updated upstream
-export type Planet = {
-  planetName: string;
-  PlanetImage: React.FC<SvgProps>;
-  planetInfo: string;
-};
-
-export const EARTH: Planet = {
-  planetName: "Earth",
-  PlanetImage: Assets.images.Earth,
-  planetInfo: "Earth",
-};
-=======
 const EARTH: Planet = PLANETS.find((planet) => planet.name === "Earth")!;
->>>>>>> Stashed changes
 
 type PlanetContextType = {
   currentPlanet: Planet;

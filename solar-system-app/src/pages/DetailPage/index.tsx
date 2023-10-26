@@ -1,12 +1,14 @@
 import React from "react";
-import { Text, View } from "react-native";
+
+import { StyleSheet, Text, View } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Assets from "../../Assets";
+import { Colors, Fonts } from "../../Styles/StyleGuide";
 import DropDownListItem from "../../components/DropDownListItem";
 import Header from "../../components/Header";
-import { doggoIpsum } from "../../data";
 import useOwnNavigation from "../../hooks/useOwnNavigation";
 import { usePlanetContext } from "../../providers/PlanetContextProvider";
+import { doggoIpsum } from "../../data";
 
 const DetailPage: React.FC = () => {
   const { currentPlanet } = usePlanetContext();
