@@ -1,38 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { SvgProps } from "react-native-svg";
+import { Text } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Gradients } from "../../Styles/StyleGuide";
+import { Category } from "../../data";
 
-type CategoryButtonProps = {
-  label: string;
-  color: "blue" | "pink" | "cyan" | "yellow";
-  Icon: React.FC<SvgProps>;
-};
+interface ICategoryButtonProps {
+  category: Category;
+}
+const CategoryButton: React.FC<ICategoryButtonProps> = ({ category }) => {
+  const { gradient, label, Icon } = category;
+  const GradientColor = Gradients[gradient];
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({
-  label,
-  color,
-  Icon,
-}) => {
-  const Gradient = Gradients[color];
+  const handleCategoryPress = () => {
+    console.log("Navigate to category");
+  };
+
   return (
-    <TouchableOpacity>
-      <Gradient style={styles.container}>
-        <Icon className="mb-2" />
-        <Text className="text-white">{label}</Text>
-      </Gradient>
+    <TouchableOpacity onPress={handleCategoryPress}>
+      <GradientColor className="justify-center items-center w-20 h-20 rounded-md">
+        <Icon />
+        <Text className="text-white mt-2">{label}</Text>
+      </GradientColor>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderRadius: 8,
-    width: 75,
-    height: 75,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default CategoryButton;

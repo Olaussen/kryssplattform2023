@@ -1,19 +1,20 @@
+import React, { createContext, useContext, useState } from "react";
+
 import {
-  Roboto_400Regular,
-  Roboto_700Bold,
   useFonts,
+  Roboto_700Bold,
+  Roboto_400Regular,
 } from "@expo-google-fonts/roboto";
-import React from "react";
 import WelcomeRoutes from "./src/Routes/Welcome.Routes";
 import PlanetContextProvider from "./src/providers/PlanetContextProvider";
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoadead] = useFonts({
     Roboto_700Bold,
     Roboto_400Regular,
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoadead) {
     return null;
   }
 

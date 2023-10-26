@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 
-type RouteList = {
+export type RouteList = {
   Welcome: undefined;
   HomeRoutes: undefined;
   DetailPage: undefined;
   Search: undefined;
   Favorites: undefined;
 };
-
-type SolarNavigationProps = NavigationProp<RouteList>;
+type SolarNavigationProp = NavigationProp<RouteList>;
 
 const useOwnNavigation = () => {
-  const navigation = useNavigation<SolarNavigationProps>();
+  const navigation = useNavigation<SolarNavigationProp>();
 
   const navigate = (path: keyof RouteList) => {
     navigation.navigate(path);

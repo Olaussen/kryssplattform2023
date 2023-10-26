@@ -1,61 +1,42 @@
-import { useState } from "react";
+import React, { useState } from "react";
+
 import {
   NativeSyntheticEvent,
-  StyleSheet,
   TextInputChangeEventData,
-  View,
+  View
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { Colors, Fonts } from "../../Styles/StyleGuide";
 import Assets from "../../Assets";
 
-type InputProps = {
-  onTextChange?: (text: string) => void;
-};
+interface IInputProps {
+  placeholderText?: string;
+  onInputChange?: (text: string) => void;
+}
 
-const Input: React.FC<InputProps> = ({ onTextChange }) => {
-  const [inputValue, setInputValue] = useState<string>("");
+const Input: React.FC<IInputProps> = ({ placeholderText, onInputChange }) => {
+  const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>
+  const handleOnChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>
   ) => {
-    setInputValue(event.nativeEvent.text);
-    onTextChange && onTextChange(event.nativeEvent.text);
+    setInputValue(e.nativeEvent.text);
+    onInputChange && onInputChange(e.nativeEvent.text);
   };
 
   return (
-    <View style={styles.container}>
+    <View className="justify-center items-center bg-brand h-10 rounded-lg overflow-hidden flex-row px-4 pl-1 w-[92%] self-center mt-5">
       <TextInput
-        style={[styles.input, Fonts.paragraph()]}
+        className="mx-4 flex-1 text-white opacity-70 font-xl"
+        onChange={handleOnChange}
+        selectionColor="#FFF"
+        underlineColorAndroid="transparent"
         value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Search..."
-        placeholderTextColor="white"
+        placeholder={placeholderText}
+        placeholderTextColor="#FFFFFF64"
       />
       <Assets.icons.Search width={16} height={16} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "95%",
-    justifyContent: "center",
-    flexDirection: "row",
-    alignItems: "center",
-    alignSelf: "center",
-    height: 50,
-    backgroundColor: Colors.brandBackground,
-    borderRadius: 10,
-    paddingHorizontal: 10,
-  },
-  input: {
-    flex: 1,
-    color: "white",
-    opacity: 0.6,
-    fontSize: 20,
-    marginHorizontal: 10,
-  },
-});
 
 export default Input;

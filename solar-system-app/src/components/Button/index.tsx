@@ -1,38 +1,29 @@
 import React, { FunctionComponent } from "react";
 import {
   GestureResponderEvent,
-  StyleSheet,
   Text,
   TouchableOpacity,
+  View
 } from "react-native";
 import { SvgProps } from "react-native-svg";
-import { Fonts, Gradients } from "../../Styles/StyleGuide";
+import { Gradients } from "../../Styles/StyleGuide";
 
 interface IButtonProps {
-  title: string;
+  label: string;
   Icon?: FunctionComponent<SvgProps>;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
-
-const Button: React.FC<IButtonProps> = ({ title, Icon, onPress }) => {
+const Button: React.FC<IButtonProps> = ({ label, Icon, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Gradients.button style={styles.gradient}>
-        <Text style={[Fonts.buttonTitle(), { color: "#fff" }]}>{title}</Text>
-        {Icon && <Icon style={{ marginLeft: 16 }} />}
+      <Gradients.button className="mt-4 rounded-lg bg-black px-8 py-4 flex-row">
+        <View className="items-center flex-row">
+          <Text className="text-white font-bold text-lg">{label}</Text>
+          {Icon && <Icon className="ml-4" />}
+        </View>
       </Gradients.button>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  gradient: {
-    borderRadius: 8,
-    paddingHorizontal: 32,
-    paddingVertical: 16,
-    flexDirection: "row",
-    marginTop: 16,
-  },
-});
 
 export default Button;

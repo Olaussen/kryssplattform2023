@@ -1,46 +1,45 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import Assets from "../../Assets";
-import { Fonts } from "../../Styles/StyleGuide";
+import useOwnNavigation from "../../hooks/useOwnNavigation";
 
-const Header: React.FC = () => {
+interface IHeaderProps {
+  home?: boolean;
+  handleBack?: () => void;
+}
+const Header: React.FC<IHeaderProps> = ({ home, handleBack }) => {
+  const { goBack } = useOwnNavigation();
+
+  const handleBackPress = () => {
+    if (handleBack) return handleBack();
+    goBack();
+  };
+
   const handleSettingsPress = () => {
-    console.log("Settings Pressed");
+    console.log("Navigate to settings");
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <View style={styles.helloBlock}>
-          <Text style={[Fonts.homeTitle(), styles.textWhite]}>Well met, </Text>
-          <Text style={[Fonts.homeTitle(), styles.textPink]}>friend!</Text>
+    <View className="flex-row justify-between items-center w-fill h-1/5 p-4">
+      {home ? (
+        <View>
+          <View className="flex-row">
+            <Text className="text-white font-bold text-3xl">Well met, </Text>
+            <Text className="text-pink-600 font-bold text-3xl">friend!</Text>
+          </View>
+          <Text className="text-white">What are you going to learn today?</Text>
         </View>
-        <Text style={styles.textWhite}>What are you going to learn today?</Text>
-      </View>
+      ) : (
+        <TouchableOpacity onPress={handleBackPress}>
+          <Assets.icons.Back width={24} height={24} />
+        </TouchableOpacity>
+      )}
       <TouchableOpacity onPress={handleSettingsPress}>
         <Assets.icons.Settings />
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "85%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 40,
-  },
-  helloBlock: {
-    flexDirection: "row",
-  },
-  textWhite: {
-    color: "white",
-  },
-  textPink: {
-    color: "#FF2184",
-  },
-});
 
 export default Header;

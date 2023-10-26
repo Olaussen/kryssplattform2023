@@ -1,7 +1,8 @@
 import { ReactNode, createContext, useContext, useState } from "react";
-import { SvgProps } from "react-native-svg";
 import Assets from "../Assets";
+import { PLANETS, Planet } from "../data";
 
+<<<<<<< Updated upstream
 export type Planet = {
   planetName: string;
   PlanetImage: React.FC<SvgProps>;
@@ -13,17 +14,19 @@ export const EARTH: Planet = {
   PlanetImage: Assets.images.Earth,
   planetInfo: "Earth",
 };
+=======
+const EARTH: Planet = PLANETS.find((planet) => planet.name === "Earth")!;
+>>>>>>> Stashed changes
 
 type PlanetContextType = {
   currentPlanet: Planet;
-  setCurrentPlanet: (planet: Planet) => void;
+  updateCurrentPlanet: (planet: Planet) => void;
 };
 
 const PlanetContext = createContext<PlanetContextType>({
   currentPlanet: EARTH,
-  setCurrentPlanet: () => {},
+  updateCurrentPlanet: (planet: Planet) => {},
 });
-
 export const usePlanetContext = () => useContext(PlanetContext);
 
 const PlanetContextProvider = ({ children }: { children: ReactNode }) => {
@@ -34,9 +37,7 @@ const PlanetContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <PlanetContext.Provider
-      value={{ currentPlanet, setCurrentPlanet: updateCurrentPlanet }}
-    >
+    <PlanetContext.Provider value={{ currentPlanet, updateCurrentPlanet }}>
       {children}
     </PlanetContext.Provider>
   );

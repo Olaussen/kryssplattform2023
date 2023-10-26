@@ -1,53 +1,33 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, View } from "react-native";
 import Assets from "../../Assets";
-import { Colors, Fonts } from "../../Styles/StyleGuide";
 import Button from "../../components/Button";
 import useOwnNavigation from "../../hooks/useOwnNavigation";
 
 const Welcome: React.FC = () => {
   const { navigate } = useOwnNavigation();
 
-  const handleContinueClick = () => {
+  const handleOnPressWelcome = () => {
     navigate("HomeRoutes");
   };
 
   return (
-    <View style={styles.container}>
-      <Assets.images.BackgroundApp style={styles.bgImage} />
-      <Text style={[styles.welcome, Fonts.paragraph()]}>Welcome!</Text>
-      <Text style={[styles.title, Fonts.homeTitle()]}>
+    <View className="justify-center items-center bg-brand flex-1">
+      <Assets.images.BackgroundApp className="absolute z-0" />
+      <Text className="text-white text-center opacity-70">Welcome!</Text>
+      <Text className="text-white content-center w-10/12 text-center text-3xl font-bold">
         Let's journey through our solar system
       </Text>
-
-      <Text style={[styles.title, Fonts.paragraph(), styles.buttonMargin]}>
-        Press the button below to embark
+      <Text className="text-white mt-[45%] text-md">
+        Press the button below to embark!
       </Text>
       <Button
-        title="Continue"
+        label="Continue"
         Icon={Assets.icons.Forward}
-        onPress={handleContinueClick}
+        onPress={handleOnPressWelcome}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.brandBackground,
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  bgImage: { position: "absolute", zIndex: 0 },
-  welcome: {
-    color: "white",
-    opacity: 0.65,
-  },
-  title: { color: "white", maxWidth: "85%", textAlign: "center" },
-  buttonMargin: {
-    marginTop: "50%",
-  },
-});
 
 export default Welcome;
