@@ -30,10 +30,10 @@ const PlanetCard: React.FC<PlanetCardProps> = ({ label, PlanetImage }) => {
 
   return (
     <TouchableOpacity onPress={handlePlanetPress}>
-      <View style={styles.container}>
-        <PlanetImage style={styles.image} width={164} height={164} />
-        <View style={styles.footer}>
-          <Text style={styles.label}>{label}</Text>
+      <View className="bg-system-brand w-140 h-190 overflow-hidden mr-4 rounded-lg">
+        <PlanetImage style={styles.image} width={164} height={164} className="right-6 bottom-5" />
+        <View className="flex-row justify-between items-center bottom-2">
+          <Text className="text-white ml-4"> {label} </Text>
           <Assets.icons.OrangeForward
             style={styles.icon}
             width={15}
@@ -46,24 +46,10 @@ const PlanetCard: React.FC<PlanetCardProps> = ({ label, PlanetImage }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.brandBackground,
-    borderRadius: 8,
-    width: 140,
-    height: 190,
-    overflow: "hidden",
-    marginRight: 15,
-  },
+
   image: {
     right: 35,
     bottom: 20,
-  },
-  label: { color: "white", marginLeft: 16 },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    bottom: 6,
   },
   icon: { marginRight: 8 },
 });

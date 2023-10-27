@@ -15,73 +15,29 @@ const DetailPlanetCard: React.FC<DetailPlanetCardProps> = ({
   planetInfo,
 }) => {
   return (
-    <View style={styles.container}>
-      <PlanetImage width={200} height={200} style={styles.planet} />
-      <View style={styles.infos}>
-        <View style={styles.title}>
-          <Text style={[Fonts.homeTitle(), styles.whiteText]}>
+    <View className="w-96 bg-system-brand h-auto rounded-lg overflow-hidden my-3 flex-row">
+      <PlanetImage width={200} height={200} className="bottom-8 right-10" />
+      <View  className="left-[-30] w-[41%] mr-24 ml-2 justify-center">
+        <View className="flex-row justify-between items-center">
+          <Text className="text-white" style={Fonts.homeTitle()}>
             {planetName}
           </Text>
           <TouchableOpacity>
             <Assets.icons.Save width={24} height={24} />
           </TouchableOpacity>
         </View>
-        <Text style={[styles.whiteText, styles.info]}>{planetInfo}</Text>
-        <TouchableOpacity style={styles.footer}>
-          <Text style={styles.whiteText}>Continue reading...</Text>
+        <Text className="text-white opacity-[0.6] h-[100]">{planetInfo}</Text>
+        <TouchableOpacity className="flex-row mt-2 items-center">
+          <Text className="text-white">Continue reading...</Text>
           <Assets.icons.OrangeForward
             width={16}
             height={16}
-            style={styles.arrow}
+            className="ml-2"
           />
         </TouchableOpacity>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "95%",
-    backgroundColor: Colors.brandBackground,
-    height: "auto",
-    borderRadius: 10,
-    overflow: "hidden",
-    marginVertical: 10,
-    flexDirection: "row",
-  },
-  planet: {
-    top: -40,
-    left: -35,
-  },
-  infos: {
-    left: -30,
-    width: "41%",
-    marginRight: 100,
-    marginLeft: 6,
-    justifyContent: "center",
-  },
-  info: {
-    opacity: 0.6,
-    height: 100,
-  },
-  title: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  whiteText: {
-    color: "white",
-  },
-
-  arrow: {
-    marginLeft: 5,
-  },
-  footer: {
-    flexDirection: "row",
-    marginTop: 10,
-    alignItems: "center",
-  },
-});
 
 export default DetailPlanetCard;

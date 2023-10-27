@@ -15,7 +15,9 @@ const Welcome: React.FC = () => {
   return (
     <View style={styles.container}>
       <Assets.images.BackgroundApp style={styles.bgImage} />
-      <Text style={[styles.welcome, Fonts.paragraph()]}>Welcome!</Text>
+      <Text style={[styles.welcome, Fonts.paragraph()]}>
+        Welcome!
+      </Text>
       <Text style={[styles.title, Fonts.homeTitle()]}>
         Let's journey through our solar system
       </Text>
