@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Assets from "../../Assets";
-import { Colors, Fonts } from "../../Styles/StyleGuide";
 import DropDownListItem from "../../components/DropDownListItem";
 import Header from "../../components/Header";
+import { doggoIpsum } from "../../data";
 import useOwnNavigation from "../../hooks/useOwnNavigation";
 import { usePlanetContext } from "../../providers/PlanetContextProvider";
-import { doggoIpsum } from "../../data";
+import { PlanetInfo, fetchPlanet } from "../../api/api";
 
 const DetailPage: React.FC = () => {
+  const [planetInfo, setPlanetInfo] = useState<PlanetInfo>();
   const { currentPlanet } = usePlanetContext();
   const { name, description, Image } = currentPlanet;
   const { goBack } = useOwnNavigation();
+
+  const useFetchPlanet = async () => {
+    const planet = await fetchPlanet(name);
+    setPlanetInfo(planet);
+  };
+
+  useEffect(() => {
+    useFetchPlanet();
+  }, [currentPlanet]);
 
   const handleBackPress = () => {
     goBack();
@@ -45,7 +55,10 @@ const DetailPage: React.FC = () => {
         <Text className="mt-4 text-md">{description}</Text>
         <DropDownListItem title="History" text={doggoIpsum} />
         <View className="border border-brand opacity-10" />
-        <DropDownListItem title="Physical Characteristics" text={doggoIpsum} />
+        <DropDownListItem
+          title="Physical Characteristics"
+          text={prettyPrintPlanetInfo(planetInfo)}
+        />
         <View className="border border-brand opacity-10" />
         <DropDownListItem title="Notable people" text={doggoIpsum} />
         <View className="border border-brand opacity-10" />
@@ -53,6 +66,13 @@ const DetailPage: React.FC = () => {
       </ScrollView>
     </View>
   );
+};
+
+const prettyPrintPlanetInfo = (planetInfo: PlanetInfo | undefined) => {
+  if (!planetInfo) {
+    return "No planet info available";
+  }
+  return JSON.stringify(planetInfo, null, 4);
 };
 
 export default DetailPage;

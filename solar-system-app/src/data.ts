@@ -102,3 +102,4 @@ export const retrieveFavoritesFromStorage = async (): Promise<string[]> => {
     return [];
   }
 };
+
