@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { Text, View } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Assets from "../../Assets";
@@ -17,8 +16,8 @@ const DetailPage: React.FC = () => {
   const { goBack } = useOwnNavigation();
 
   const useFetchPlanet = async () => {
-    const planet = await fetchPlanet(name);
-    setPlanetInfo(planet);
+    const planetInfo = await fetchPlanet(name);
+    setPlanetInfo(planetInfo);
   };
 
   useEffect(() => {
