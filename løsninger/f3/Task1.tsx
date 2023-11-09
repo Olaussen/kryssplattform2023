@@ -23,3 +23,46 @@ const Counter: React.FC = () => {
 }
 
 export default Counter;
+
+function findFirst<T>(items: T[], predicate: (item: T) => boolean): T | undefined {
+  for (const item of items) {
+      if (predicate(item)) {
+          return item;
+      }
+  }
+  return undefined;
+}
+
+findFirst
+
+let someValue: unknown = "this is a string";
+let strLength: number = (someValue as string).length;
+
+strLength
+
+// Definerer en grensesnitt for den forventede responsstrukturen
+interface ApiResponse {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+// En funksjon som gjør et eksternt kall
+async function fetchTodo(id: number): Promise<ApiResponse> {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
+
+  // Sjekker om responsen er vellykket
+  if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+  }
+
+  // Anta at responsen er i JSON-format
+  const result: ApiResponse = await response.json();
+  return result;
+}
+
+// Bruker funksjonen
+fetchTodo(1)
+  .then(todo => console.log('Fetched todo:', todo))
+  .catch(error => console.error('An error occurred:', error));
